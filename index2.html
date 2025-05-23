@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Générateur de mélodies - Babylon.js + WAM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Icône vide pour éviter l'erreur 404 -->
+  <link rel="icon" href="data:,">
+
+  <!-- Feuilles de style -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Librairies Babylon.js + Havok -->
+  <script src="lib/babylon.js"></script>
+  <script src="lib/HavokPhysics_umd.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: #2c2e4a;
+    }
+    canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="renderCanvas"></canvas>
+
+  <!-- Script principal -->
+  <script type="module">
+    import "./js/main.js";
+
+    const canvas = document.getElementById("renderCanvas");
+    const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+    engine.setHardwareScalingLevel(1 / window.devicePixelRatio);
+
+    window.addEventListener("resize", () => {
+      engine.resize();
+    });
+  </script>
+</body>
+</html>
